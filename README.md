@@ -14,6 +14,17 @@ Database Name - eventManagementDB
 - Tickets – Stores ticket booking and cancellation information
 - Categories – Stores event categories such as Music, Tech, Sports, etc.
 
+## Schema Structure and Relationships
+
+The database follows a relational structure using references between collections:
+
+- The Users collection stores both organizers and attendees. The role field differentiates whether a user can create events or book tickets.
+- The Events collection references the organizer through organizerId, which corresponds to userId in the Users collection. Each event is created by exactly  one organizer.
+- The Tickets collection references both ```eventId``` (from Events) and ```userId``` (from Users), allowing attendees to book multiple tickets for an event.
+- The Categories collection is used to classify events. Each event stores a category value, enabling grouping and filtering of events by category.
+
+This structure enables efficient event management, ticket tracking, and aggregation-based reporting.
+
 ## Key Features
 
 - CRUD operations on all collections
